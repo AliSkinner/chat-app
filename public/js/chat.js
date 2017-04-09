@@ -25,7 +25,7 @@ socket.on('connect', function () {
     } else {
       console.log(('no error'));
     }
-  })
+  });
 });
 
 socket.on('disconnect', function () {
@@ -40,14 +40,14 @@ socket.on('updateUserList', function (users) {
   $('#users').html($ol);
 });
 
-socket.on('newMessage', function (message){
+socket.on('newMessage', function (message) {
   var formattedTime = moment(message.createdAt).format('h:mm a');
   var template = $('#message-template').html();
   var html = Mustache.render(template, {
     text: message.text,
     from: message.from,
     createdAt: formattedTime
-  })
+  });
   $('#messages').append(html);
   scrollToBottom();
 });
@@ -62,14 +62,14 @@ socket.on('newLocationMessage', function(message) {
   });
   $('#messages').append(html);
   scrollToBottom();
- });
+});
 
 $('#message-form').on('submit', function(e) {
   var $messageTextBox = $('[name="message"]');
   e.preventDefault();
   socket.emit('createMessage', {
     text: $messageTextBox.val()
-  }, function(data) {
+  }, function() {
     $messageTextBox.val('');
   });
 });

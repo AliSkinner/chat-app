@@ -29,7 +29,7 @@ describe('Users', () => {
       name: 'test',
       room: 'test room'
     };
-    let resUser = users.addUser(user.id, user.name, user.room);
+    users.addUser(user.id, user.name, user.room);
 
     expect(users.users.length).toEqual(1);
     expect(users.users[0].name).toBe('test');
