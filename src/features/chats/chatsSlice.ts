@@ -1,31 +1,38 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import Hashes from "jshashes";
-import data from "./chatData.json";
+import chatData from "./chatData.json";
+import { sortByRecent } from "../../common/util/sortByRecent";
 
 const MD5 = new Hashes.MD5();
-export interface Message {
+
+type Message = {
   id: string;
   last_updated: string;
   text: string;
-}
-
-export interface ChatThread {
+};
+type ChatThread = {
   id: string;
   name: string;
   last_updated: string;
   messages: Message[];
-}
-
-export interface ChatsState {
+};
+type ChatsState = {
   chatThreads: ChatThread[];
   activeThreadId: string;
   activeMessageId: string | null;
-}
+};
+
+const sortedChatThreads = chatData.sort(sortByRecent).map((thread) => {
+  return {
+    ...thread,
+    messages: thread.messages.sort(sortByRecent).reverse(),
+  };
+});
 
 const initialState: ChatsState = {
-  chatThreads: data,
-  activeThreadId: data[0].id,
+  chatThreads: sortedChatThreads,
+  activeThreadId: sortedChatThreads[0].id,
   activeMessageId: null,
 };
 
@@ -43,7 +50,7 @@ export const chatsSlice = createSlice({
     },
 
     createNewMessage: (state, action: PayloadAction<{ text: string }>) => {
-      const chat = state.chatThreads.find(
+      const thread = state.chatThreads.find(
         (thread) => thread.id === state.activeThreadId
       )!;
       const dateString = new Date().toISOString();
@@ -52,12 +59,15 @@ export const chatsSlice = createSlice({
         id: MD5.hex(dateString + state.activeThreadId),
         last_updated: dateString,
       };
-      chat.messages = [...chat.messages, newMessage];
+
+      thread.messages = [...thread.messages, newMessage];
+      thread.last_updated = new Date().toISOString();
+      state.chatThreads = state.chatThreads.sort(sortByRecent);
     },
 
     editMessage: (state, action: PayloadAction<{ text: string }>) => {
       const thread = state.chatThreads.find(
-        (chat) => chat.id === state.activeThreadId
+        (thread) => thread.id === state.activeThreadId
       )!;
       const message = thread!.messages.find(
         (message) => message.id === state.activeMessageId
@@ -70,8 +80,11 @@ export const chatsSlice = createSlice({
       const filteredMessages = thread.messages.filter(
         (message) => message.id !== state.activeMessageId
       );
+
       thread.messages = [...filteredMessages, newMessage];
       state.activeMessageId = null;
+      thread.last_updated = new Date().toISOString();
+      state.chatThreads = state.chatThreads.sort(sortByRecent);
     },
   },
 });
@@ -83,7 +96,7 @@ export const selectChatThreads = (state: RootState) => state.chats.chatThreads;
 
 export const selectActiveThreadMessages = (state: RootState) =>
   state.chats.chatThreads.find(
-    (chat) => chat.id === state.chats.activeThreadId
+    (thread) => thread.id === state.chats.activeThreadId
   )!.messages;
 
 export const selectIsEditMode = (state: RootState) =>
@@ -110,4 +123,5 @@ export const {
   createNewMessage,
   editMessage,
 } = chatsSlice.actions;
+
 export default chatsSlice.reducer;
