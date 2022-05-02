@@ -1,17 +1,16 @@
 .threads {
   padding: 0;
   text-align: left;
-
 }
 .thread {
   list-style: none;
   margin: 0 0 5px 0;
-  color: #1E6EAF;
+  color: #1e6eaf;
   text-decoration: underline;
 }
 
 .thread:hover {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .active {

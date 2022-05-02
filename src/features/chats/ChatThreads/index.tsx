@@ -1,1 +1,1 @@
-export {ChatThreads} from './ChatThreads'
+export { ChatThreads } from "./ChatThreads";

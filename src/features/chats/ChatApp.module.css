@@ -1,7 +1,7 @@
 .wrapper {
   border: 1px solid black;
   display: flex;
-  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
   height: 100%;
   width: 100%;
 }
@@ -12,7 +12,7 @@
 }
 
 .activeThread {
- flex-grow: 1;
+  flex-grow: 1;
 }
 
 .chatWindow {

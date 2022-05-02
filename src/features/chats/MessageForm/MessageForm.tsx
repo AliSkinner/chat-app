@@ -6,7 +6,7 @@ import {
   createNewMessage,
   editMessage,
 } from "../chatsSlice";
-import style from './MessageForm.module.css'
+import style from "./MessageForm.module.css";
 
 export function MessageForm() {
   const dispatch = useAppDispatch();
@@ -36,7 +36,6 @@ export function MessageForm() {
 
   return (
     <form onSubmit={onSubmit} className={style.form}>
-
       <input
         type="textarea"
         name="message"
@@ -44,7 +43,9 @@ export function MessageForm() {
         onChange={handleChange}
         className={style.input}
       />
-      <button className={style.button} type="submit">{isEditMode ? "edit" : "send"}</button>
+      <button className={style.button} type="submit">
+        {isEditMode ? "edit" : "send"}
+      </button>
     </form>
   );
 }

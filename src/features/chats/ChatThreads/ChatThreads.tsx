@@ -4,7 +4,7 @@ import {
   selectChatThreads,
   selectActiveThreadId,
 } from "../chatsSlice";
-import classnames from 'classnames'
+import classnames from "classnames";
 import style from "./ChatThreads.module.css";
 
 export function ChatThreads() {
