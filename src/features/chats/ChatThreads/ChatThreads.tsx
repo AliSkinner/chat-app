@@ -4,6 +4,7 @@ import {
   selectChatThreads,
   selectActiveThreadId,
 } from "../chatsSlice";
+import classnames from 'classnames'
 import style from "./ChatThreads.module.css";
 
 export function ChatThreads() {
@@ -14,12 +15,15 @@ export function ChatThreads() {
     dispatch(updateActiveThreadId({ id }));
 
   return (
-    <ul>
+    <ul className={style.threads}>
       {chatLog.map(({ name, id }) => (
         <li
           key={id}
           onClick={composeClickHandler(id)}
-          className={id === activeThreadId ? style.active : ""}
+          className={classnames(
+            style.thread,
+            id === activeThreadId ? style.active : ""
+          )}
         >
           {name}
         </li>

@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  flex-grow: 1;
+  margin-right: 5px;
+  color: #696969;
+}
+
+.button {
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid black;
+  padding:  5px 10px;
+  text-transform: uppercase;
+  color: #696969;
+}

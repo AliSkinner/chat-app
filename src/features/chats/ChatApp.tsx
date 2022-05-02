@@ -1,18 +1,21 @@
 import { ChatThreads } from "./ChatThreads";
 import { ChatWindow } from "./ChatWindow";
 import { MessageForm } from "./MessageForm";
+import style from "./ChatApp.module.css";
 
 export function ChatApp() {
   return (
-    <div>
-      <div>
+    <div className={style.wrapper}>
+      <aside className={style.threads}>
         <ChatThreads />
-      </div>
-      <div>
-        <ChatWindow />
-      </div>
-      <div>
-        <MessageForm />
+      </aside>
+      <div className={style.activeThread}>
+        <section className={style.chatWindow}>
+          <ChatWindow />
+        </section>
+        <section className={style.messageForm}>
+          <MessageForm />
+        </section>
       </div>
     </div>
   );

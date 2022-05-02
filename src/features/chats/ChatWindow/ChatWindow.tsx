@@ -3,6 +3,7 @@ import {
   selectActiveThreadMessages,
   updateActiveMessageId,
 } from "../chatsSlice";
+import style from './ChatWindow.module.css'
 
 export function ChatWindow() {
   const messages = useAppSelector(selectActiveThreadMessages);
@@ -11,14 +12,14 @@ export function ChatWindow() {
     dispatch(updateActiveMessageId({ id }));
 
   return (
-    <ul>
+    <ul className={style.messages}>
       {messages.map((message) => {
         return (
-          <li key={message.id} onClick={composeClickHandler(message.id)}>
-            <div>
-              <p>{message.last_updated}</p>
-              <p>{message.text}</p>
-            </div>
+          <li key={message.id} onClick={composeClickHandler(message.id)} className={style.message}>
+            <article>
+              <p className={style.updated}>{message.last_updated}</p>
+              <p className={style.text}>{message.text}</p>
+            </article>
           </li>
         );
       })}

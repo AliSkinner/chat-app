@@ -1,0 +1,29 @@
+.wrapper {
+  border: 1px solid black;
+  display: flex;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+.threads {
+  padding: 10px;
+  border-right: 1px solid black;
+}
+
+.activeThread {
+ flex-grow: 1;
+}
+
+.chatWindow {
+  padding: 10px;
+  flex-grow: 2;
+  border-bottom: 1px solid black;
+  height: 85%;
+  overflow-y: scroll;
+}
+
+.messageForm {
+  align-items: center;
+  padding: 10px;
+}
