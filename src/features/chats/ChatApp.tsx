@@ -1,11 +1,15 @@
-import React from 'react';
-
-import { ChatThreads } from './ChatThreads';
+import { ChatThreads } from "./ChatThreads";
+import { ChatWindow } from "./ChatWindow";
 
 export function ChatApp() {
   return (
     <div>
-      <ChatThreads/>
+      <div>
+        <ChatThreads />
+      </div>
+      <div>
+        <ChatWindow />
+      </div>
     </div>
   );
 }
