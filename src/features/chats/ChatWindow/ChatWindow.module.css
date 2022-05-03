@@ -8,6 +8,11 @@
   margin: 20px 0;
 }
 
-article > p {
+.updated,
+.text {
   margin: 0 0 5px 0;
+}
+
+.updated {
+  font-size: 14px;
 }

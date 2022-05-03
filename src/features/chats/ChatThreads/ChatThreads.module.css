@@ -2,11 +2,13 @@
   padding: 0;
   text-align: left;
 }
+
 .thread {
   list-style: none;
   margin: 0 0 5px 0;
   color: #1e6eaf;
   text-decoration: underline;
+  margin-bottom: 10px;
 }
 
 .thread:hover {

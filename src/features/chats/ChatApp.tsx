@@ -5,7 +5,7 @@ import style from "./ChatApp.module.css";
 
 export function ChatApp() {
   return (
-    <div className={style.wrapper}>
+    <div className={style.chatApp}>
       <aside className={style.threads}>
         <ChatThreads />
       </aside>

@@ -8,7 +8,7 @@ import classnames from "classnames";
 import style from "./ChatThreads.module.css";
 
 export function ChatThreads() {
-  const chatLog = useAppSelector(selectChatThreads);
+  const threads = useAppSelector(selectChatThreads);
   const activeThreadId = useAppSelector(selectActiveThreadId);
   const dispatch = useAppDispatch();
   const composeClickHandler = (id: string) => () =>
@@ -16,7 +16,7 @@ export function ChatThreads() {
 
   return (
     <ul className={style.threads}>
-      {chatLog.map(({ name, id }) => (
+      {threads.map(({ name, id }) => (
         <li
           key={id}
           onClick={composeClickHandler(id)}

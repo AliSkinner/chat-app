@@ -4,7 +4,7 @@ import style from "./App.module.css";
 
 function App() {
   return (
-    <div className={style.appWrapper}>
+    <div className={style.applicationWrapper}>
       <ChatApp />
     </div>
   );

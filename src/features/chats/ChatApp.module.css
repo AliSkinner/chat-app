@@ -1,29 +1,38 @@
-.wrapper {
-  border: 1px solid black;
-  display: flex;
+@value padding-size: 10px;
+@value border-style: 1px solid black;
+
+.chatApp {
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
   height: 100%;
   width: 100%;
+  min-width: 500px;
+  display: flex;
+  border: border-style;
 }
 
 .threads {
-  padding: 10px;
-  border-right: 1px solid black;
+  padding: padding-size;
+  border-right: border-style;
+  overflow-y: scroll;
 }
 
 .activeThread {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .chatWindow {
-  padding: 10px;
-  flex-grow: 2;
-  border-bottom: 1px solid black;
+  padding: padding-size;
+  flex: 1 0 auto;
+  border-bottom: border-style;
   height: 85%;
   overflow-y: scroll;
 }
 
 .messageForm {
+  flex-shrink: 0;
   align-items: center;
-  padding: 10px;
+  padding: padding-size;
 }

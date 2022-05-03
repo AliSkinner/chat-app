@@ -18,7 +18,7 @@ export function MessageForm() {
     setValue(initialValue);
   }, [initialValue]);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (value.length > 0) {
@@ -35,7 +35,7 @@ export function MessageForm() {
     setValue(event.target.value);
 
   return (
-    <form onSubmit={onSubmit} className={style.form}>
+    <form onSubmit={handleSubmit} className={style.form}>
       <input
         type="textarea"
         name="message"
