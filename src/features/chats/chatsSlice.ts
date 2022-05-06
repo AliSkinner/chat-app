@@ -17,7 +17,7 @@ type ChatThread = {
   last_updated: string;
   messages: Message[];
 };
-type ChatsState = {
+export type ChatsState = {
   chatThreads: ChatThread[];
   activeThreadId: string;
   activeMessageId: string | null;
